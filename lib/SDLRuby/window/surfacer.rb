@@ -20,7 +20,7 @@ module SDLRuby
         st = SDL_Surface.new(ptr)
         st.flags &= ~SDL_DONTFREE
 
-        s = Surface.new(ptr, add_ref: true)
+        Surface.new(ptr, add_ref: true)
       end
 
       # ウィンドウのサーフェスがvalidかどうか確認していない。

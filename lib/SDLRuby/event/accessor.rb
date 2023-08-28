@@ -37,6 +37,8 @@ module SDLRuby
       end
 
       self[:drop].module_eval do
+        undef file
+
         def file = char_ptr_to_str(entity.file)
 
         alias_method :text, :file
@@ -47,10 +49,14 @@ module SDLRuby
       end
 
       self[:edit].module_eval  do
+        undef text
+
         def text = char_ary_to_str(entity.text)
       end
 
       self[:editExt].module_eval do
+        undef text
+
         def text = char_ptr_to_str(entity.text)
 
         def self.extended(obj)
@@ -63,18 +69,26 @@ module SDLRuby
       end
 
       self[:key].module_eval do
+        undef keysym
+
         def keysym = entity.keysym.to_h
       end
 
       self[:syswm].module_eval do
+        undef msg
+
         def msg = entity.msg
       end
 
       self[:text].module_eval do
+        undef text
+
         def text = char_ary_to_str(entity.text)
       end
 
       self[:user].module_eval do
+        undef data1, data2
+
         def data1 = entity.data1
 
         def data2 = entity.data2
@@ -85,7 +99,7 @@ module SDLRuby
       #
       all_members = union_members.map { |a| a.last }.flatten.uniq
 
-      attr_reader *all_members
+      attr_reader(*all_members)
 
       # Ruby like accessor
       #
