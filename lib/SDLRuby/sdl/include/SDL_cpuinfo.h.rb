@@ -1,0 +1,27 @@
+module SDLRuby::SDL
+  require_relative 'SDL_stdinc.h.rb'
+
+  extern "int SDL_GetCPUCount(void)"
+  extern "int SDL_GetCPUCacheLineSize(void)"
+  extern "SDL_bool SDL_HasRDTSC(void)"
+  extern "SDL_bool SDL_HasAltiVec(void)"
+  extern "SDL_bool SDL_HasMMX(void)"
+  extern "SDL_bool SDL_Has3DNow(void)"
+  extern "SDL_bool SDL_HasSSE(void)"
+  extern "SDL_bool SDL_HasSSE2(void)"
+  extern "SDL_bool SDL_HasSSE3(void)"
+  extern "SDL_bool SDL_HasSSE41(void)"
+  extern "SDL_bool SDL_HasSSE42(void)"
+  extern "SDL_bool SDL_HasAVX(void)"
+  extern "SDL_bool SDL_HasAVX2(void)"
+  extern "SDL_bool SDL_HasAVX512F(void)"
+  extern "SDL_bool SDL_HasARMSIMD(void)"
+  extern "SDL_bool SDL_HasNEON(void)"
+  extern "SDL_bool SDL_HasLSX(void)"
+  extern "SDL_bool SDL_HasLASX(void)"
+  extern "int SDL_GetSystemRAM(void)"
+  extern "size_t SDL_SIMDGetAlignment(void)"
+  extern "void * SDL_SIMDAlloc(const size_t len)"
+  extern "void * SDL_SIMDRealloc(void *mem, const size_t len)"
+  extern "void SDL_SIMDFree(void *ptr)"
+end

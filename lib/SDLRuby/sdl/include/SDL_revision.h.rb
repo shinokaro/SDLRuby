@@ -1,0 +1,2 @@
+module SDLRuby::SDL
+end
