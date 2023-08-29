@@ -1,0 +1,5 @@
+module SDLRuby
+  class Rect
+    def self.[]: (*any) -> self
+  end
+end

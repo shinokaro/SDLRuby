@@ -1,0 +1,24 @@
+module SDLRuby
+  module PixelFormatter
+    INDEXED_PIXELFORMATS: [untyped, untyped, untyped, untyped, untyped]
+    ALPHA_PIXELFORMATS: [untyped, untyped, untyped, untyped, untyped, untyped, untyped, untyped, untyped, untyped, untyped, untyped, untyped]
+    include SDL
+
+    def self.alpha?: (untyped x) -> bool
+    def self.bits_per_pixel: (untyped x) -> Integer?
+    def self.bytes_per_pixel: (untyped x) -> Integer
+    def self.format_name: (untyped x) -> String
+    def self.fourcc?: (untyped x) -> String?
+    def self.indexed_color?: (untyped x) -> bool
+    def self.rgb_color?: (untyped x) -> bool
+    def alpha?: -> bool
+    def bits_per_pixel: -> Integer?
+    alias depth bits_per_pixel
+    def bytes_per_pixel: -> Integer
+    def format_name: -> String
+    alias pixel_format_name format_name
+    def fourcc?: -> String?
+    def indexed_color?: -> bool
+    def rgb_color?: -> bool
+  end
+end
