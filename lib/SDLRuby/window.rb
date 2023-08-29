@@ -62,7 +62,7 @@ module SDLRuby
       @id = id
     end
 
-    def ==(other) = other.to_ptr == to_ptr
+    def ==(other) = other.respond_to?(:to_ptr) && to_ptr == other.to_ptr
 
     def destroy = SDL.SDL_DestroyWindow(self)
 

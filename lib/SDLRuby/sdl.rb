@@ -32,25 +32,25 @@ module SDLRuby
       block_given? ? yield(*v) : v
     end
 
-    require_relative "sdl/sdl"
-    require_relative "sdl_error"
+    require_relative 'sdl/sdl'
+    require_relative 'sdl_error'
 
-    require_relative "audio"
-    require_relative "cursor"
-    require_relative "display"
-    require_relative "event"
-    require_relative "hint"
-    require_relative "keyboard"
-    require_relative "mouse"
-    require_relative "palette"
-    require_relative "pixel_formatter"
-    require_relative "rect"
-    require_relative "renderer"
-    require_relative "rw_ops"
-    require_relative "surface"
-    require_relative "text_input"
-    require_relative "texture"
-    require_relative "window"
+    require_relative 'audio'
+    require_relative 'cursor'
+    require_relative 'display'
+    require_relative 'event'
+    require_relative 'hint'
+    require_relative 'keyboard'
+    require_relative 'mouse'
+    require_relative 'palette'
+    require_relative 'pixel_formatter'
+    require_relative 'rect'
+    require_relative 'renderer'
+    require_relative 'rw_ops'
+    require_relative 'surface'
+    require_relative 'text_input'
+    require_relative 'texture'
+    require_relative 'window'
 
     class << self
       # sdl
@@ -156,6 +156,10 @@ module SDLRuby
       #
       def platform = SDL.SDL_GetPlatform.to_s
 
+      # timer
+      #
+      def ticks = SDL.SDL_GetTicks
+
       # version
       #
       def revision = SDL.SDL_GetRevision.to_s
@@ -168,7 +172,7 @@ module SDLRuby
 
       # video
       #
-      def current_video_driver
+      def video_driver
         (ptr = SDL.SDL_GetCurrentVideoDriver).null? ? nil : ptr.to_s
       end
 

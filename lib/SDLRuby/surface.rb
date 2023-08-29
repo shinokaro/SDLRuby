@@ -41,13 +41,13 @@ module SDLRuby
       @format.palette = pal
     end
 
-    def ==(other) = other.to_ptr == @st.to_ptr
+    def ==(other) = other.respond_to?(:to_ptr) && @st.to_ptr == other.to_ptr
 
     def alpha_mod
-      v = SDL.tmp_value("Uint8")
+      a = SDL.tmp_value("Uint8")
       err = SDL.SDL_GetSurfaceAlphaMod(self, a)
       raise SDLError if err < 0
-      v.value
+      a.value
     end
 
     def alpha_mod=(n)
@@ -56,10 +56,10 @@ module SDLRuby
     end
 
     def blend_mode
-      v = SDL.tmp_value("int")
-      err = SDL.SDL_GetSurfaceBlendMode(self, blend_mode)
+      a = SDL.tmp_value("int")
+      err = SDL.SDL_GetSurfaceBlendMode(self, a)
       raise SDLError if err < 0
-      v.value
+      a.value
     end
 
     def blend_mode=(blend)

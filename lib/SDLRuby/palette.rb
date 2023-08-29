@@ -19,7 +19,10 @@ module SDLRuby
     def_delegator :@st, :ncolors, :size
     def_delegators :@st, :refcount, :to_ptr, :version
 
-    def ==(other) = other.to_ptr == @st.to_ptr || other.to_a == to_a
+    def ==(other)
+      (other.respond_to?(:to_ptr) && @st.to_ptr == other.to_ptr) ||
+        (Palette === other && other.respond_to?(:to_a) && to_a == other.to_a)
+    end
 
     def [](n)
       raise ArgumentError if n < 0 || n >= size

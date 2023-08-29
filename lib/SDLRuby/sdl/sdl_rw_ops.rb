@@ -8,6 +8,7 @@ module SDLRuby
     SDL_RWOPS_MEMORY_RO = 5
 
     # アクセッサ用の構造体。実際のSDL_RWopsとは違い隠し領域のメンバーを含まない。
+    #
     SDL_RWops = struct(
       [
         "void *size",
@@ -19,7 +20,7 @@ module SDLRuby
       ]
     )
 
-    class SDL_RWops
+    SDL_RWops.module_eval do
       class << self
         undef malloc
       end
