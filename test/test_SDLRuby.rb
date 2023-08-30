@@ -15,6 +15,8 @@ class TestSDLRuby < Minitest::Test
     assert_respond_to ::SDLRuby::SDL, :SDL_GetPixelFormatName
     m = -> (x) { ::SDLRuby::SDL.SDL_GetPixelFormatName(x).to_s }
 
+    assert_equal "SDL_PIXELFORMAT_UNKNOWN",
+                 m.(::SDLRuby::SDL::SDL_PIXELFORMAT_UNKNOWN)
     assert_equal "SDL_PIXELFORMAT_INDEX1LSB",
                  m.(::SDLRuby::SDL::SDL_PIXELFORMAT_INDEX1LSB)
     assert_equal "SDL_PIXELFORMAT_INDEX1MSB",
