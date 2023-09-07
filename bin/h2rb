@@ -1,0 +1,105 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "bundler/setup"
+require_relative "scanner"
+
+class Conv
+  attr_reader :s
+
+  def initialize(text)
+    @s = Scanner.new(text)
+  end
+
+  def line(&)
+    a = []
+    while s.eos? || !s.new_line?
+      if s.blank?
+        " "
+      elsif s.token?
+        s.matched
+      else
+        raise "invalid token"
+      end => obj
+      a << (block_given? ? yield(obj) : obj)
+    end
+    a
+  end
+
+  def to_s
+    out = String.new
+    until s.eos?
+      if s.blank?
+        out << " "
+      elsif s.new_line?
+        out << $/
+      elsif s.pp?("include")
+        out << "require_relative"
+      elsif s.pp?("define")
+        s.blank?
+        identifier = s.token?
+        if s.token?("(") #=> lparen
+          line => a
+          args, code = a.join.split(")", 2)
+          out << <<~EOT
+        def #{identifier}(#{args})
+          #{code}
+        end
+      EOT
+        else
+          line => a
+          if a.size == 0
+            out << "#{identifier} = nil\n"
+          else
+            out << "#{identifier} = #{a.join.strip}\n"
+          end
+        end
+      elsif s.pp?("undef")
+        line => a
+        out << "undefined(#{a.join.strip})\n"
+      elsif s.pp?("ifdef")
+        line => a
+        out << "if defined(#{a.join.strip})\n"
+      elsif s.pp?("ifndef")
+        line => a
+        out << "if !defined(#{a.join.strip})\n"
+      elsif s.pp?("elif")
+        out << "elsif"
+      elsif s.pp?("else")
+        out << "else"
+      elsif s.pp?("endif")
+        out << "end"
+      elsif s.pp?("if")
+        out << "if"
+      elsif s.pp?("error")
+        line => a
+        out << "error \"#{a.join.strip}\"\n"
+      elsif s.keyword?("extern")
+        a = []
+        while true
+          if s.blank? || s.new_line?
+            a << " "
+          elsif s.token?("\"C\" {")
+            break
+          elsif s.token?("DECLSPEC") || s.token?("SDLCALL")
+            # skip
+          elsif s.token?(";")
+            break
+          else
+            a << s.next
+          end
+        end
+        out << "extern \"#{a.join.strip.gsub(/ +/, " ")}\""
+      elsif s.keyword?("typedef")
+        out << "typedef"
+      else
+        out << s.next
+      end
+    end
+    out
+  end
+end
+
+file = ARGV[0]
+text = File.binread(file)
+puts Conv.new(text).to_s
