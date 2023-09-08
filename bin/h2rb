@@ -42,7 +42,7 @@ class Conv
           line => a
           args, code = a.join.split(")", 2)
           out << <<~EOT
-        def #{identifier}(#{args})
+        def self.#{identifier}(#{args})
           #{code}
         end
       EOT

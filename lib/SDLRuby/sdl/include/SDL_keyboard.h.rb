@@ -1,8 +1,17 @@
 module SDLRuby::SDL
-  require_relative 'SDL_stdinc.h.rb'
-  require_relative 'SDL_error.h.rb'
-  require_relative 'SDL_keycode.h.rb'
-  require_relative 'SDL_video.h.rb'
+  require_relative "SDL_stdinc.h"
+  require_relative "SDL_error.h"
+  require_relative "SDL_keycode.h"
+  require_relative "SDL_video.h"
+
+  SDL_Keysym = struct(
+    [
+      "SDL_Scancode scancode",
+      "SDL_Keycode sym",
+      "Uint16 mod",
+      "Uint32 unused",
+    ]
+  )
 
   extern "SDL_Window * SDL_GetKeyboardFocus(void)"
   extern "const Uint8 * SDL_GetKeyboardState(int *numkeys)"
