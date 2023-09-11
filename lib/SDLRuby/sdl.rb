@@ -94,7 +94,7 @@ module SDLRuby
       def last_error_message = SDL.SDL_GetError.to_s
 
       def last_error_message=(s)
-        SDL.SDL_SetError(s.gsub(/%/, "%%"), nil)
+        SDL.SDL_SetError(s.to_s.gsub(/%/, "%%"))
       end
 
       # filesystem
