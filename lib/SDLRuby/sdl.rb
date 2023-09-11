@@ -77,7 +77,7 @@ module SDLRuby
       def clipboard_text? = SDL.SDL_HasClipboardText == 1
 
       def clipboard_text=(s)
-        err = SDL.SDL_SetClipboardText(s.encord("UTF-8"))
+        err = SDL.SDL_SetClipboardText(s.to_s.encode("UTF-8"))
         raise SDLError if err < 0
       end
 
