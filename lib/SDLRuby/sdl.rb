@@ -109,18 +109,17 @@ module SDLRuby
 
       # locale
       #
-      # 失敗の時 nil を戻す。
-      #
       def locales
         ptr = SDL.SDL_GetPreferredLocales
-        return if ptr.null?
+        return [] if ptr.null?
 
         ptr.free = SDL_FREE
-        pitch = SDL_Locale.size
+        size = SDL_Locale.size
         (0..).inject([]) do |memo, i|
-          st = SDL_Locale.new(ptr + i * pitch)
+          st = SDL_Locale.new(ptr + i * size)
           break memo if st.language.null?
-          memo << [st.language.to_s, st.country.to_s]
+          memo << [st.language.to_s,
+                   (c = st.country).null? ? nil : c.to_s]
         end
       end
 
