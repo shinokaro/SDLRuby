@@ -1,0 +1,655 @@
+module SDLRuby
+  module SDL
+    def self.tmp_value: (*String a) { (untyped) -> untyped } -> untyped
+
+    # sdl
+    #
+    def self.init: (?untyped? flags) -> untyped
+
+    def self.init?: (untyped flags) -> untyped
+
+    def self.quit: () -> untyped
+
+    # clipboard
+    #
+    def self.clipboard_text: () -> String
+
+    def self.clipboard_text?: () -> bool
+
+    def self.clipboard_text=: (String s) -> void
+
+    # cpu info
+    #
+    def self.cpu_cache_line_size: () -> Integer
+
+    def self.cpu_count: () -> Integer
+
+    def self.system_ram: () -> Integer
+
+    # error
+    #
+    def self.last_error_message: () -> String
+
+    def self.last_error_message=: (String s) -> void
+
+    # filesystem
+    #
+    def self.base_path: () -> String
+
+    # locale
+    #
+    def self.locales: () -> (Array[[String, (String | nil)]] | [ ])
+
+    # message box
+    #
+    def self.alert: (String message, ?String? title, ?flags: untyped?, ?window: untyped?) -> void
+
+    def self.error_alert: (untyped message, ?::String title) -> void
+
+    def self.warn_alert: (untyped message, ?::String title) -> void
+
+    def self.info_alert: (untyped message, ?::String title) -> void
+
+    # misc
+    #
+    def self.open_url: (untyped url) -> (untyped | nil)
+
+    # platform
+    #
+    def self.platform: () -> String
+
+    # timer
+    #
+    def self.ticks: () -> Integer
+
+    # version
+    #
+    def self.revision: () -> String
+
+    def self.version: () -> String
+
+    # video
+    #
+    def self.video_driver: () -> (nil | untyped)
+
+    def self.screen_saver=: (boolish b) -> void
+
+    def self.screen_saver?: () -> bool
+
+    def self.video_drivers: () -> Array[String]
+
+    # C Functions
+    #
+    def self.SDL_AddEventWatch: (untyped, untyped) -> untyped
+    def self.SDL_AddHintCallback: (untyped, untyped, untyped) -> untyped
+    def self.SDL_AddTimer: (untyped, untyped, untyped) -> untyped
+    def self.SDL_AllocFormat: (untyped) -> untyped
+    def self.SDL_AllocPalette: (untyped) -> untyped
+    def self.SDL_AllocRW: () -> untyped
+    def self.SDL_AudioInit: (untyped) -> untyped
+    def self.SDL_AudioQuit: () -> untyped
+    def self.SDL_AudioStreamAvailable: (untyped) -> untyped
+    def self.SDL_AudioStreamClear: (untyped) -> untyped
+    def self.SDL_AudioStreamFlush: (untyped) -> untyped
+    def self.SDL_AudioStreamGet: (untyped, untyped, untyped) -> untyped
+    def self.SDL_AudioStreamPut: (untyped, untyped, untyped) -> untyped
+    def self.SDL_BuildAudioCVT: (untyped, untyped, untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_CalculateGammaRamp: (untyped, untyped) -> untyped
+    def self.SDL_CaptureMouse: (untyped) -> untyped
+    def self.SDL_ClearComposition: () -> untyped
+    def self.SDL_ClearError: () -> untyped
+    def self.SDL_ClearHints: () -> untyped
+    def self.SDL_ClearQueuedAudio: (untyped) -> untyped
+    def self.SDL_CloseAudio: () -> untyped
+    def self.SDL_CloseAudioDevice: (untyped) -> untyped
+    def self.SDL_ComposeCustomBlendMode: (untyped, untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_ConvertAudio: (untyped) -> untyped
+    def self.SDL_ConvertPixels: (untyped, untyped, untyped, untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_ConvertSurface: (untyped, untyped, untyped) -> untyped
+    def self.SDL_ConvertSurfaceFormat: (untyped, untyped, untyped) -> untyped
+    def self.SDL_CreateColorCursor: (untyped, untyped, untyped) -> untyped
+    def self.SDL_CreateCursor: (untyped, untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_CreateRGBSurface: (untyped, untyped, untyped, untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_CreateRGBSurfaceFrom: (untyped, untyped, untyped, untyped, untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_CreateRGBSurfaceWithFormat: (untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_CreateRGBSurfaceWithFormatFrom: (untyped, untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_CreateRenderer: (untyped, untyped, untyped) -> untyped
+    def self.SDL_CreateShapedWindow: (untyped, untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_CreateSoftwareRenderer: (untyped) -> untyped
+    def self.SDL_CreateSystemCursor: (untyped) -> untyped
+    def self.SDL_CreateTexture: (untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_CreateTextureFromSurface: (untyped, untyped) -> untyped
+    def self.SDL_CreateWindow: (untyped, untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_CreateWindowAndRenderer: (untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_CreateWindowFrom: (untyped) -> untyped
+    def self.SDL_DelEventWatch: (untyped, untyped) -> untyped
+    def self.SDL_DelHintCallback: (untyped, untyped, untyped) -> untyped
+    def self.SDL_Delay: (untyped) -> untyped
+    def self.SDL_DequeueAudio: (untyped, untyped, untyped) -> untyped
+    def self.SDL_DestroyRenderer: (untyped) -> untyped
+    def self.SDL_DestroyTexture: (untyped) -> untyped
+    def self.SDL_DestroyWindow: (untyped) -> untyped
+    def self.SDL_DestroyWindowSurface: (untyped) -> untyped
+    def self.SDL_DisableScreenSaver: () -> untyped
+    def self.SDL_DuplicateSurface: (untyped) -> untyped
+    def self.SDL_EnableScreenSaver: () -> untyped
+    def self.SDL_EncloseFPoints: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_EnclosePoints: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_Error: (untyped) -> untyped
+    def self.SDL_EventState: (untyped, untyped) -> untyped
+    def self.SDL_FillRect: (untyped, untyped, untyped) -> untyped
+    def self.SDL_FillRects: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_FilterEvents: (untyped, untyped) -> untyped
+    def self.SDL_FlashWindow: (untyped, untyped) -> untyped
+    def self.SDL_FlushEvent: (untyped) -> untyped
+    def self.SDL_FlushEvents: (untyped, untyped) -> untyped
+    def self.SDL_FreeAudioStream: (untyped) -> untyped
+    def self.SDL_FreeCursor: (untyped) -> untyped
+    def self.SDL_FreeFormat: (untyped) -> untyped
+    def self.SDL_FreePalette: (untyped) -> untyped
+    def self.SDL_FreeRW: (untyped) -> untyped
+    def self.SDL_FreeSurface: (untyped) -> untyped
+    def self.SDL_FreeWAV: (untyped) -> untyped
+    def self.SDL_GL_BindTexture: (untyped, untyped, untyped) -> untyped
+    def self.SDL_GL_CreateContext: (untyped) -> untyped
+    def self.SDL_GL_DeleteContext: (untyped) -> untyped
+    def self.SDL_GL_ExtensionSupported: (untyped) -> untyped
+    def self.SDL_GL_GetAttribute: (untyped, untyped) -> untyped
+    def self.SDL_GL_GetCurrentContext: () -> untyped
+    def self.SDL_GL_GetCurrentWindow: () -> untyped
+    def self.SDL_GL_GetDrawableSize: (untyped, untyped, untyped) -> untyped
+    def self.SDL_GL_GetProcAddress: (untyped) -> untyped
+    def self.SDL_GL_GetSwapInterval: () -> untyped
+    def self.SDL_GL_LoadLibrary: (untyped) -> untyped
+    def self.SDL_GL_MakeCurrent: (untyped, untyped) -> untyped
+    def self.SDL_GL_ResetAttributes: () -> untyped
+    def self.SDL_GL_SetAttribute: (untyped, untyped) -> untyped
+    def self.SDL_GL_SetSwapInterval: (untyped) -> untyped
+    def self.SDL_GL_SwapWindow: (untyped) -> untyped
+    def self.SDL_GL_UnbindTexture: (untyped) -> untyped
+    def self.SDL_GL_UnloadLibrary: () -> untyped
+    def self.SDL_GameControllerAddMapping: (untyped) -> untyped
+    def self.SDL_GameControllerAddMappingsFromRW: (untyped, untyped) -> untyped
+    def self.SDL_GameControllerClose: (untyped) -> untyped
+    def self.SDL_GameControllerEventState: (untyped) -> untyped
+    def self.SDL_GameControllerFromInstanceID: (untyped) -> untyped
+    def self.SDL_GameControllerFromPlayerIndex: (untyped) -> untyped
+    def self.SDL_GameControllerGetAppleSFSymbolsNameForAxis: (untyped, untyped) -> untyped
+    def self.SDL_GameControllerGetAppleSFSymbolsNameForButton: (untyped, untyped) -> untyped
+    def self.SDL_GameControllerGetAttached: (untyped) -> untyped
+    def self.SDL_GameControllerGetAxis: (untyped, untyped) -> untyped
+    def self.SDL_GameControllerGetAxisFromString: (untyped) -> untyped
+    def self.SDL_GameControllerGetButton: (untyped, untyped) -> untyped
+    def self.SDL_GameControllerGetButtonFromString: (untyped) -> untyped
+    def self.SDL_GameControllerGetFirmwareVersion: (untyped) -> untyped
+    def self.SDL_GameControllerGetJoystick: (untyped) -> untyped
+    def self.SDL_GameControllerGetNumTouchpadFingers: (untyped, untyped) -> untyped
+    def self.SDL_GameControllerGetNumTouchpads: (untyped) -> untyped
+    def self.SDL_GameControllerGetPlayerIndex: (untyped) -> untyped
+    def self.SDL_GameControllerGetProduct: (untyped) -> untyped
+    def self.SDL_GameControllerGetProductVersion: (untyped) -> untyped
+    def self.SDL_GameControllerGetSensorData: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_GameControllerGetSensorDataRate: (untyped, untyped) -> untyped
+    def self.SDL_GameControllerGetSensorDataWithTimestamp: (untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_GameControllerGetSerial: (untyped) -> untyped
+    def self.SDL_GameControllerGetStringForAxis: (untyped) -> untyped
+    def self.SDL_GameControllerGetStringForButton: (untyped) -> untyped
+    def self.SDL_GameControllerGetTouchpadFinger: (untyped, untyped, untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_GameControllerGetType: (untyped) -> untyped
+    def self.SDL_GameControllerGetVendor: (untyped) -> untyped
+    def self.SDL_GameControllerHasAxis: (untyped, untyped) -> untyped
+    def self.SDL_GameControllerHasButton: (untyped, untyped) -> untyped
+    def self.SDL_GameControllerHasLED: (untyped) -> untyped
+    def self.SDL_GameControllerHasRumble: (untyped) -> untyped
+    def self.SDL_GameControllerHasRumbleTriggers: (untyped) -> untyped
+    def self.SDL_GameControllerHasSensor: (untyped, untyped) -> untyped
+    def self.SDL_GameControllerIsSensorEnabled: (untyped, untyped) -> untyped
+    def self.SDL_GameControllerMapping: (untyped) -> untyped
+    def self.SDL_GameControllerMappingForDeviceIndex: (untyped) -> untyped
+    def self.SDL_GameControllerMappingForIndex: (untyped) -> untyped
+    def self.SDL_GameControllerName: (untyped) -> untyped
+    def self.SDL_GameControllerNameForIndex: (untyped) -> untyped
+    def self.SDL_GameControllerNumMappings: () -> untyped
+    def self.SDL_GameControllerOpen: (untyped) -> untyped
+    def self.SDL_GameControllerPath: (untyped) -> untyped
+    def self.SDL_GameControllerPathForIndex: (untyped) -> untyped
+    def self.SDL_GameControllerRumble: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_GameControllerRumbleTriggers: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_GameControllerSendEffect: (untyped, untyped, untyped) -> untyped
+    def self.SDL_GameControllerSetLED: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_GameControllerSetPlayerIndex: (untyped, untyped) -> untyped
+    def self.SDL_GameControllerSetSensorEnabled: (untyped, untyped, untyped) -> untyped
+    def self.SDL_GameControllerTypeForIndex: (untyped) -> untyped
+    def self.SDL_GameControllerUpdate: () -> untyped
+    def self.SDL_GetAudioDeviceName: (untyped, untyped) -> untyped
+    def self.SDL_GetAudioDeviceSpec: (untyped, untyped, untyped) -> untyped
+    def self.SDL_GetAudioDeviceStatus: (untyped) -> untyped
+    def self.SDL_GetAudioDriver: (untyped) -> untyped
+    def self.SDL_GetAudioStatus: () -> untyped
+    def self.SDL_GetBasePath: () -> untyped
+    def self.SDL_GetCPUCacheLineSize: () -> untyped
+    def self.SDL_GetCPUCount: () -> untyped
+    def self.SDL_GetClipRect: (untyped, untyped) -> untyped
+    def self.SDL_GetClipboardText: () -> untyped
+    def self.SDL_GetClosestDisplayMode: (untyped, untyped, untyped) -> untyped
+    def self.SDL_GetColorKey: (untyped, untyped) -> untyped
+    def self.SDL_GetCurrentAudioDriver: () -> untyped
+    def self.SDL_GetCurrentDisplayMode: (untyped, untyped) -> untyped
+    def self.SDL_GetCurrentVideoDriver: () -> untyped
+    def self.SDL_GetCursor: () -> untyped
+    def self.SDL_GetDefaultAudioInfo: (untyped, untyped, untyped) -> untyped
+    def self.SDL_GetDefaultCursor: () -> untyped
+    def self.SDL_GetDesktopDisplayMode: (untyped, untyped) -> untyped
+    def self.SDL_GetDisplayBounds: (untyped, untyped) -> untyped
+    def self.SDL_GetDisplayDPI: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_GetDisplayMode: (untyped, untyped, untyped) -> untyped
+    def self.SDL_GetDisplayName: (untyped) -> untyped
+    def self.SDL_GetDisplayOrientation: (untyped) -> untyped
+    def self.SDL_GetDisplayUsableBounds: (untyped, untyped) -> untyped
+    def self.SDL_GetError: () -> untyped
+    def self.SDL_GetErrorMsg: (untyped, untyped) -> untyped
+    def self.SDL_GetEventFilter: (untyped, untyped) -> untyped
+    def self.SDL_GetGlobalMouseState: (untyped, untyped) -> untyped
+    def self.SDL_GetGrabbedWindow: () -> untyped
+    def self.SDL_GetHint: (untyped) -> untyped
+    def self.SDL_GetHintBoolean: (untyped, untyped) -> untyped
+    def self.SDL_GetKeyFromName: (untyped) -> untyped
+    def self.SDL_GetKeyFromScancode: (untyped) -> untyped
+    def self.SDL_GetKeyName: (untyped) -> untyped
+    def self.SDL_GetKeyboardFocus: () -> untyped
+    def self.SDL_GetKeyboardState: (untyped) -> untyped
+    def self.SDL_GetMemoryFunctions: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_GetModState: () -> untyped
+    def self.SDL_GetMouseFocus: () -> untyped
+    def self.SDL_GetMouseState: (untyped, untyped) -> untyped
+    def self.SDL_GetNumAllocations: () -> untyped
+    def self.SDL_GetNumAudioDevices: (untyped) -> untyped
+    def self.SDL_GetNumAudioDrivers: () -> untyped
+    def self.SDL_GetNumDisplayModes: (untyped) -> untyped
+    def self.SDL_GetNumRenderDrivers: () -> untyped
+    def self.SDL_GetNumTouchDevices: () -> untyped
+    def self.SDL_GetNumTouchFingers: (untyped) -> untyped
+    def self.SDL_GetNumVideoDisplays: () -> untyped
+    def self.SDL_GetNumVideoDrivers: () -> untyped
+    def self.SDL_GetOriginalMemoryFunctions: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_GetPerformanceCounter: () -> untyped
+    def self.SDL_GetPerformanceFrequency: () -> untyped
+    def self.SDL_GetPixelFormatName: (untyped) -> untyped
+    def self.SDL_GetPlatform: () -> untyped
+    def self.SDL_GetPointDisplayIndex: (untyped) -> untyped
+    def self.SDL_GetPowerInfo: (untyped, untyped) -> untyped
+    def self.SDL_GetPrefPath: (untyped, untyped) -> untyped
+    def self.SDL_GetPreferredLocales: () -> untyped
+    def self.SDL_GetPrimarySelectionText: () -> untyped
+    def self.SDL_GetQueuedAudioSize: (untyped) -> untyped
+    def self.SDL_GetRGB: (untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_GetRGBA: (untyped, untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_GetRectDisplayIndex: (untyped) -> untyped
+    def self.SDL_GetRelativeMouseMode: () -> untyped
+    def self.SDL_GetRelativeMouseState: (untyped, untyped) -> untyped
+    def self.SDL_GetRenderDrawBlendMode: (untyped, untyped) -> untyped
+    def self.SDL_GetRenderDrawColor: (untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_GetRenderDriverInfo: (untyped, untyped) -> untyped
+    def self.SDL_GetRenderTarget: (untyped) -> untyped
+    def self.SDL_GetRenderer: (untyped) -> untyped
+    def self.SDL_GetRendererInfo: (untyped, untyped) -> untyped
+    def self.SDL_GetRendererOutputSize: (untyped, untyped, untyped) -> untyped
+    def self.SDL_GetRevision: () -> untyped
+    def self.SDL_GetScancodeFromKey: (untyped) -> untyped
+    def self.SDL_GetScancodeFromName: (untyped) -> untyped
+    def self.SDL_GetScancodeName: (untyped) -> untyped
+    def self.SDL_GetShapedWindowMode: (untyped, untyped) -> untyped
+    def self.SDL_GetSurfaceAlphaMod: (untyped, untyped) -> untyped
+    def self.SDL_GetSurfaceBlendMode: (untyped, untyped) -> untyped
+    def self.SDL_GetSurfaceColorMod: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_GetSystemRAM: () -> untyped
+    def self.SDL_GetTextureAlphaMod: (untyped, untyped) -> untyped
+    def self.SDL_GetTextureBlendMode: (untyped, untyped) -> untyped
+    def self.SDL_GetTextureColorMod: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_GetTextureScaleMode: (untyped, untyped) -> untyped
+    def self.SDL_GetTextureUserData: (untyped) -> untyped
+    def self.SDL_GetTicks: () -> untyped
+    def self.SDL_GetTicks64: () -> untyped
+    def self.SDL_GetTouchDevice: (untyped) -> untyped
+    def self.SDL_GetTouchDeviceType: (untyped) -> untyped
+    def self.SDL_GetTouchFinger: (untyped, untyped) -> untyped
+    def self.SDL_GetTouchName: (untyped) -> untyped
+    def self.SDL_GetVersion: (untyped) -> untyped
+    def self.SDL_GetVideoDriver: (untyped) -> untyped
+    def self.SDL_GetWindowBordersSize: (untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_GetWindowBrightness: (untyped) -> untyped
+    def self.SDL_GetWindowData: (untyped, untyped) -> untyped
+    def self.SDL_GetWindowDisplayIndex: (untyped) -> untyped
+    def self.SDL_GetWindowDisplayMode: (untyped, untyped) -> untyped
+    def self.SDL_GetWindowFlags: (untyped) -> untyped
+    def self.SDL_GetWindowFromID: (untyped) -> untyped
+    def self.SDL_GetWindowGammaRamp: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_GetWindowGrab: (untyped) -> untyped
+    def self.SDL_GetWindowICCProfile: (untyped, untyped) -> untyped
+    def self.SDL_GetWindowID: (untyped) -> untyped
+    def self.SDL_GetWindowKeyboardGrab: (untyped) -> untyped
+    def self.SDL_GetWindowMaximumSize: (untyped, untyped, untyped) -> untyped
+    def self.SDL_GetWindowMinimumSize: (untyped, untyped, untyped) -> untyped
+    def self.SDL_GetWindowMouseGrab: (untyped) -> untyped
+    def self.SDL_GetWindowMouseRect: (untyped) -> untyped
+    def self.SDL_GetWindowOpacity: (untyped, untyped) -> untyped
+    def self.SDL_GetWindowPixelFormat: (untyped) -> untyped
+    def self.SDL_GetWindowPosition: (untyped, untyped, untyped) -> untyped
+    def self.SDL_GetWindowSize: (untyped, untyped, untyped) -> untyped
+    def self.SDL_GetWindowSizeInPixels: (untyped, untyped, untyped) -> untyped
+    def self.SDL_GetWindowSurface: (untyped) -> untyped
+    def self.SDL_GetWindowTitle: (untyped) -> untyped
+    def self.SDL_GetYUVConversionMode: () -> untyped
+    def self.SDL_GetYUVConversionModeForResolution: (untyped, untyped) -> untyped
+    def self.SDL_Has3DNow: () -> untyped
+    def self.SDL_HasARMSIMD: () -> untyped
+    def self.SDL_HasAVX: () -> untyped
+    def self.SDL_HasAVX2: () -> untyped
+    def self.SDL_HasAVX512F: () -> untyped
+    def self.SDL_HasAltiVec: () -> untyped
+    def self.SDL_HasClipboardText: () -> untyped
+    def self.SDL_HasColorKey: (untyped) -> untyped
+    def self.SDL_HasEvent: (untyped) -> untyped
+    def self.SDL_HasEvents: (untyped, untyped) -> untyped
+    def self.SDL_HasIntersection: (untyped, untyped) -> untyped
+    def self.SDL_HasIntersectionF: (untyped, untyped) -> untyped
+    def self.SDL_HasLASX: () -> untyped
+    def self.SDL_HasLSX: () -> untyped
+    def self.SDL_HasMMX: () -> untyped
+    def self.SDL_HasNEON: () -> untyped
+    def self.SDL_HasPrimarySelectionText: () -> untyped
+    def self.SDL_HasRDTSC: () -> untyped
+    def self.SDL_HasSSE: () -> untyped
+    def self.SDL_HasSSE2: () -> untyped
+    def self.SDL_HasSSE3: () -> untyped
+    def self.SDL_HasSSE41: () -> untyped
+    def self.SDL_HasSSE42: () -> untyped
+    def self.SDL_HasScreenKeyboardSupport: () -> untyped
+    def self.SDL_HasSurfaceRLE: (untyped) -> untyped
+    def self.SDL_HasWindowSurface: (untyped) -> untyped
+    def self.SDL_HideWindow: (untyped) -> untyped
+    def self.SDL_Init: (untyped) -> untyped
+    def self.SDL_InitSubSystem: (untyped) -> untyped
+    def self.SDL_IntersectFRect: (untyped, untyped, untyped) -> untyped
+    def self.SDL_IntersectFRectAndLine: (untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_IntersectRect: (untyped, untyped, untyped) -> untyped
+    def self.SDL_IntersectRectAndLine: (untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_IsGameController: (untyped) -> untyped
+    def self.SDL_IsScreenKeyboardShown: (untyped) -> untyped
+    def self.SDL_IsScreenSaverEnabled: () -> untyped
+    def self.SDL_IsShapedWindow: (untyped) -> untyped
+    def self.SDL_IsTextInputActive: () -> untyped
+    def self.SDL_IsTextInputShown: () -> untyped
+    def self.SDL_JoystickAttachVirtual: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_JoystickAttachVirtualEx: (untyped) -> untyped
+    def self.SDL_JoystickClose: (untyped) -> untyped
+    def self.SDL_JoystickCurrentPowerLevel: (untyped) -> untyped
+    def self.SDL_JoystickDetachVirtual: (untyped) -> untyped
+    def self.SDL_JoystickEventState: (untyped) -> untyped
+    def self.SDL_JoystickFromInstanceID: (untyped) -> untyped
+    def self.SDL_JoystickFromPlayerIndex: (untyped) -> untyped
+    def self.SDL_JoystickGetAttached: (untyped) -> untyped
+    def self.SDL_JoystickGetAxis: (untyped, untyped) -> untyped
+    def self.SDL_JoystickGetAxisInitialState: (untyped, untyped, untyped) -> untyped
+    def self.SDL_JoystickGetBall: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_JoystickGetButton: (untyped, untyped) -> untyped
+    def self.SDL_JoystickGetDeviceInstanceID: (untyped) -> untyped
+    def self.SDL_JoystickGetDevicePlayerIndex: (untyped) -> untyped
+    def self.SDL_JoystickGetDeviceProduct: (untyped) -> untyped
+    def self.SDL_JoystickGetDeviceProductVersion: (untyped) -> untyped
+    def self.SDL_JoystickGetDeviceType: (untyped) -> untyped
+    def self.SDL_JoystickGetDeviceVendor: (untyped) -> untyped
+    def self.SDL_JoystickGetFirmwareVersion: (untyped) -> untyped
+    def self.SDL_JoystickGetHat: (untyped, untyped) -> untyped
+    def self.SDL_JoystickGetPlayerIndex: (untyped) -> untyped
+    def self.SDL_JoystickGetProduct: (untyped) -> untyped
+    def self.SDL_JoystickGetProductVersion: (untyped) -> untyped
+    def self.SDL_JoystickGetSerial: (untyped) -> untyped
+    def self.SDL_JoystickGetType: (untyped) -> untyped
+    def self.SDL_JoystickGetVendor: (untyped) -> untyped
+    def self.SDL_JoystickHasLED: (untyped) -> untyped
+    def self.SDL_JoystickHasRumble: (untyped) -> untyped
+    def self.SDL_JoystickHasRumbleTriggers: (untyped) -> untyped
+    def self.SDL_JoystickInstanceID: (untyped) -> untyped
+    def self.SDL_JoystickIsVirtual: (untyped) -> untyped
+    def self.SDL_JoystickName: (untyped) -> untyped
+    def self.SDL_JoystickNameForIndex: (untyped) -> untyped
+    def self.SDL_JoystickNumAxes: (untyped) -> untyped
+    def self.SDL_JoystickNumBalls: (untyped) -> untyped
+    def self.SDL_JoystickNumButtons: (untyped) -> untyped
+    def self.SDL_JoystickNumHats: (untyped) -> untyped
+    def self.SDL_JoystickOpen: (untyped) -> untyped
+    def self.SDL_JoystickPath: (untyped) -> untyped
+    def self.SDL_JoystickPathForIndex: (untyped) -> untyped
+    def self.SDL_JoystickRumble: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_JoystickRumbleTriggers: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_JoystickSendEffect: (untyped, untyped, untyped) -> untyped
+    def self.SDL_JoystickSetLED: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_JoystickSetPlayerIndex: (untyped, untyped) -> untyped
+    def self.SDL_JoystickSetVirtualAxis: (untyped, untyped, untyped) -> untyped
+    def self.SDL_JoystickSetVirtualButton: (untyped, untyped, untyped) -> untyped
+    def self.SDL_JoystickSetVirtualHat: (untyped, untyped, untyped) -> untyped
+    def self.SDL_JoystickUpdate: () -> untyped
+    def self.SDL_LoadBMP_RW: (untyped, untyped) -> untyped
+    def self.SDL_LoadDollarTemplates: (untyped, untyped) -> untyped
+    def self.SDL_LoadFile: (untyped, untyped) -> untyped
+    def self.SDL_LoadFile_RW: (untyped, untyped, untyped) -> untyped
+    def self.SDL_LoadWAV_RW: (untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_LockAudio: () -> untyped
+    def self.SDL_LockAudioDevice: (untyped) -> untyped
+    def self.SDL_LockJoysticks: () -> untyped
+    def self.SDL_LockSensors: () -> untyped
+    def self.SDL_LockSurface: (untyped) -> untyped
+    def self.SDL_LockTexture: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_LockTextureToSurface: (untyped, untyped, untyped) -> untyped
+    def self.SDL_LowerBlit: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_LowerBlitScaled: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_MapRGB: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_MapRGBA: (untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_MasksToPixelFormatEnum: (untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_MaximizeWindow: (untyped) -> untyped
+    def self.SDL_MinimizeWindow: (untyped) -> untyped
+    def self.SDL_MixAudio: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_MixAudioFormat: (untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_NewAudioStream: (untyped, untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_NumJoysticks: () -> untyped
+    def self.SDL_NumSensors: () -> untyped
+    def self.SDL_OpenAudio: (untyped, untyped) -> untyped
+    def self.SDL_OpenAudioDevice: (untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_OpenURL: (untyped) -> untyped
+    def self.SDL_PauseAudio: (untyped) -> untyped
+    def self.SDL_PauseAudioDevice: (untyped, untyped) -> untyped
+    def self.SDL_PeepEvents: (untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_PixelFormatEnumToMasks: (untyped, untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_PollEvent: (untyped) -> untyped
+    def self.SDL_PremultiplyAlpha: (untyped, untyped, untyped, untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_PumpEvents: () -> untyped
+    def self.SDL_PushEvent: (untyped) -> untyped
+    def self.SDL_QueryTexture: (untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_QueueAudio: (untyped, untyped, untyped) -> untyped
+    def self.SDL_Quit: () -> untyped
+    def self.SDL_QuitSubSystem: (untyped) -> untyped
+    def self.SDL_RWFromConstMem: (untyped, untyped) -> untyped
+    def self.SDL_RWFromFile: (untyped, untyped) -> untyped
+    def self.SDL_RWFromMem: (untyped, untyped) -> untyped
+    def self.SDL_RWclose: (untyped) -> untyped
+    def self.SDL_RWread: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_RWseek: (untyped, untyped, untyped) -> untyped
+    def self.SDL_RWsize: (untyped) -> untyped
+    def self.SDL_RWtell: (untyped) -> untyped
+    def self.SDL_RWwrite: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_RaiseWindow: (untyped) -> untyped
+    def self.SDL_ReadBE16: (untyped) -> untyped
+    def self.SDL_ReadBE32: (untyped) -> untyped
+    def self.SDL_ReadBE64: (untyped) -> untyped
+    def self.SDL_ReadLE16: (untyped) -> untyped
+    def self.SDL_ReadLE32: (untyped) -> untyped
+    def self.SDL_ReadLE64: (untyped) -> untyped
+    def self.SDL_ReadU8: (untyped) -> untyped
+    def self.SDL_RecordGesture: (untyped) -> untyped
+    def self.SDL_RegisterEvents: (untyped) -> untyped
+    def self.SDL_RemoveTimer: (untyped) -> untyped
+    def self.SDL_RenderClear: (untyped) -> untyped
+    def self.SDL_RenderCopy: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_RenderCopyEx: (untyped, untyped, untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_RenderCopyExF: (untyped, untyped, untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_RenderCopyF: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_RenderDrawLine: (untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_RenderDrawLineF: (untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_RenderDrawLines: (untyped, untyped, untyped) -> untyped
+    def self.SDL_RenderDrawLinesF: (untyped, untyped, untyped) -> untyped
+    def self.SDL_RenderDrawPoint: (untyped, untyped, untyped) -> untyped
+    def self.SDL_RenderDrawPointF: (untyped, untyped, untyped) -> untyped
+    def self.SDL_RenderDrawPoints: (untyped, untyped, untyped) -> untyped
+    def self.SDL_RenderDrawPointsF: (untyped, untyped, untyped) -> untyped
+    def self.SDL_RenderDrawRect: (untyped, untyped) -> untyped
+    def self.SDL_RenderDrawRectF: (untyped, untyped) -> untyped
+    def self.SDL_RenderDrawRects: (untyped, untyped, untyped) -> untyped
+    def self.SDL_RenderDrawRectsF: (untyped, untyped, untyped) -> untyped
+    def self.SDL_RenderFillRect: (untyped, untyped) -> untyped
+    def self.SDL_RenderFillRectF: (untyped, untyped) -> untyped
+    def self.SDL_RenderFillRects: (untyped, untyped, untyped) -> untyped
+    def self.SDL_RenderFillRectsF: (untyped, untyped, untyped) -> untyped
+    def self.SDL_RenderFlush: (untyped) -> untyped
+    def self.SDL_RenderGeometry: (untyped, untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_RenderGeometryRaw: (untyped, untyped, untyped, untyped, untyped, untyped, untyped, untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_RenderGetClipRect: (untyped, untyped) -> untyped
+    def self.SDL_RenderGetIntegerScale: (untyped) -> untyped
+    def self.SDL_RenderGetLogicalSize: (untyped, untyped, untyped) -> untyped
+    def self.SDL_RenderGetMetalCommandEncoder: (untyped) -> untyped
+    def self.SDL_RenderGetMetalLayer: (untyped) -> untyped
+    def self.SDL_RenderGetScale: (untyped, untyped, untyped) -> untyped
+    def self.SDL_RenderGetViewport: (untyped, untyped) -> untyped
+    def self.SDL_RenderGetWindow: (untyped) -> untyped
+    def self.SDL_RenderIsClipEnabled: (untyped) -> untyped
+    def self.SDL_RenderLogicalToWindow: (untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_RenderPresent: (untyped) -> untyped
+    def self.SDL_RenderReadPixels: (untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_RenderSetClipRect: (untyped, untyped) -> untyped
+    def self.SDL_RenderSetIntegerScale: (untyped, untyped) -> untyped
+    def self.SDL_RenderSetLogicalSize: (untyped, untyped, untyped) -> untyped
+    def self.SDL_RenderSetScale: (untyped, untyped, untyped) -> untyped
+    def self.SDL_RenderSetVSync: (untyped, untyped) -> untyped
+    def self.SDL_RenderSetViewport: (untyped, untyped) -> untyped
+    def self.SDL_RenderTargetSupported: (untyped) -> untyped
+    def self.SDL_RenderWindowToLogical: (untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_ResetHint: (untyped) -> untyped
+    def self.SDL_ResetHints: () -> untyped
+    def self.SDL_ResetKeyboard: () -> untyped
+    def self.SDL_RestoreWindow: (untyped) -> untyped
+    def self.SDL_SIMDAlloc: (untyped) -> untyped
+    def self.SDL_SIMDFree: (untyped) -> untyped
+    def self.SDL_SIMDGetAlignment: () -> untyped
+    def self.SDL_SIMDRealloc: (untyped, untyped) -> untyped
+    def self.SDL_SaveAllDollarTemplates: (untyped) -> untyped
+    def self.SDL_SaveBMP_RW: (untyped, untyped, untyped) -> untyped
+    def self.SDL_SaveDollarTemplate: (untyped, untyped) -> untyped
+    def self.SDL_SensorClose: (untyped) -> untyped
+    def self.SDL_SensorFromInstanceID: (untyped) -> untyped
+    def self.SDL_SensorGetData: (untyped, untyped, untyped) -> untyped
+    def self.SDL_SensorGetDataWithTimestamp: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_SensorGetDeviceInstanceID: (untyped) -> untyped
+    def self.SDL_SensorGetDeviceName: (untyped) -> untyped
+    def self.SDL_SensorGetDeviceNonPortableType: (untyped) -> untyped
+    def self.SDL_SensorGetDeviceType: (untyped) -> untyped
+    def self.SDL_SensorGetInstanceID: (untyped) -> untyped
+    def self.SDL_SensorGetName: (untyped) -> untyped
+    def self.SDL_SensorGetNonPortableType: (untyped) -> untyped
+    def self.SDL_SensorGetType: (untyped) -> untyped
+    def self.SDL_SensorOpen: (untyped) -> untyped
+    def self.SDL_SensorUpdate: () -> untyped
+    def self.SDL_SetClipRect: (untyped, untyped) -> untyped
+    def self.SDL_SetClipboardText: (untyped) -> untyped
+    def self.SDL_SetColorKey: (untyped, untyped, untyped) -> untyped
+    def self.SDL_SetCursor: (untyped) -> untyped
+    def self.SDL_SetError: (untyped, untyped) -> untyped
+    def self.SDL_SetEventFilter: (untyped, untyped) -> untyped
+    def self.SDL_SetHint: (untyped, untyped) -> untyped
+    def self.SDL_SetHintWithPriority: (untyped, untyped, untyped) -> untyped
+    def self.SDL_SetMemoryFunctions: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_SetModState: (untyped) -> untyped
+    def self.SDL_SetPaletteColors: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_SetPixelFormatPalette: (untyped, untyped) -> untyped
+    def self.SDL_SetPrimarySelectionText: (untyped) -> untyped
+    def self.SDL_SetRelativeMouseMode: (untyped) -> untyped
+    def self.SDL_SetRenderDrawBlendMode: (untyped, untyped) -> untyped
+    def self.SDL_SetRenderDrawColor: (untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_SetRenderTarget: (untyped, untyped) -> untyped
+    def self.SDL_SetSurfaceAlphaMod: (untyped, untyped) -> untyped
+    def self.SDL_SetSurfaceBlendMode: (untyped, untyped) -> untyped
+    def self.SDL_SetSurfaceColorMod: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_SetSurfacePalette: (untyped, untyped) -> untyped
+    def self.SDL_SetSurfaceRLE: (untyped, untyped) -> untyped
+    def self.SDL_SetTextInputRect: (untyped) -> untyped
+    def self.SDL_SetTextureAlphaMod: (untyped, untyped) -> untyped
+    def self.SDL_SetTextureBlendMode: (untyped, untyped) -> untyped
+    def self.SDL_SetTextureColorMod: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_SetTextureScaleMode: (untyped, untyped) -> untyped
+    def self.SDL_SetTextureUserData: (untyped, untyped) -> untyped
+    def self.SDL_SetWindowAlwaysOnTop: (untyped, untyped) -> untyped
+    def self.SDL_SetWindowBordered: (untyped, untyped) -> untyped
+    def self.SDL_SetWindowBrightness: (untyped, untyped) -> untyped
+    def self.SDL_SetWindowData: (untyped, untyped, untyped) -> untyped
+    def self.SDL_SetWindowDisplayMode: (untyped, untyped) -> untyped
+    def self.SDL_SetWindowFullscreen: (untyped, untyped) -> untyped
+    def self.SDL_SetWindowGammaRamp: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_SetWindowGrab: (untyped, untyped) -> untyped
+    def self.SDL_SetWindowHitTest: (untyped, untyped, untyped) -> untyped
+    def self.SDL_SetWindowIcon: (untyped, untyped) -> untyped
+    def self.SDL_SetWindowInputFocus: (untyped) -> untyped
+    def self.SDL_SetWindowKeyboardGrab: (untyped, untyped) -> untyped
+    def self.SDL_SetWindowMaximumSize: (untyped, untyped, untyped) -> untyped
+    def self.SDL_SetWindowMinimumSize: (untyped, untyped, untyped) -> untyped
+    def self.SDL_SetWindowModalFor: (untyped, untyped) -> untyped
+    def self.SDL_SetWindowMouseGrab: (untyped, untyped) -> untyped
+    def self.SDL_SetWindowMouseRect: (untyped, untyped) -> untyped
+    def self.SDL_SetWindowOpacity: (untyped, untyped) -> untyped
+    def self.SDL_SetWindowPosition: (untyped, untyped, untyped) -> untyped
+    def self.SDL_SetWindowResizable: (untyped, untyped) -> untyped
+    def self.SDL_SetWindowShape: (untyped, untyped, untyped) -> untyped
+    def self.SDL_SetWindowSize: (untyped, untyped, untyped) -> untyped
+    def self.SDL_SetWindowTitle: (untyped, untyped) -> untyped
+    def self.SDL_SetYUVConversionMode: (untyped) -> untyped
+    def self.SDL_ShowCursor: (untyped) -> untyped
+    def self.SDL_ShowMessageBox: (untyped, untyped) -> untyped
+    def self.SDL_ShowSimpleMessageBox: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_ShowWindow: (untyped) -> untyped
+    def self.SDL_SoftStretch: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_SoftStretchLinear: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_StartTextInput: () -> untyped
+    def self.SDL_StopTextInput: () -> untyped
+    def self.SDL_UnionFRect: (untyped, untyped, untyped) -> untyped
+    def self.SDL_UnionRect: (untyped, untyped, untyped) -> untyped
+    def self.SDL_UnlockAudio: () -> untyped
+    def self.SDL_UnlockAudioDevice: (untyped) -> untyped
+    def self.SDL_UnlockJoysticks: () -> untyped
+    def self.SDL_UnlockSensors: () -> untyped
+    def self.SDL_UnlockSurface: (untyped) -> untyped
+    def self.SDL_UnlockTexture: (untyped) -> untyped
+    def self.SDL_UpdateNVTexture: (untyped, untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_UpdateTexture: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_UpdateWindowSurface: (untyped) -> untyped
+    def self.SDL_UpdateWindowSurfaceRects: (untyped, untyped, untyped) -> untyped
+    def self.SDL_UpdateYUVTexture: (untyped, untyped, untyped, untyped, untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_UpperBlit: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_UpperBlitScaled: (untyped, untyped, untyped, untyped) -> untyped
+    def self.SDL_VideoInit: (untyped) -> untyped
+    def self.SDL_VideoQuit: () -> untyped
+    def self.SDL_WaitEvent: (untyped) -> untyped
+    def self.SDL_WaitEventTimeout: (untyped, untyped) -> untyped
+    def self.SDL_WarpMouseGlobal: (untyped, untyped) -> untyped
+    def self.SDL_WarpMouseInWindow: (untyped, untyped, untyped) -> untyped
+    def self.SDL_WasInit: (untyped) -> untyped
+    def self.SDL_WriteBE16: (untyped, untyped) -> untyped
+    def self.SDL_WriteBE32: (untyped, untyped) -> untyped
+    def self.SDL_WriteBE64: (untyped, untyped) -> untyped
+    def self.SDL_WriteLE16: (untyped, untyped) -> untyped
+    def self.SDL_WriteLE32: (untyped, untyped) -> untyped
+    def self.SDL_WriteLE64: (untyped, untyped) -> untyped
+    def self.SDL_WriteU8: (untyped, untyped) -> untyped
+    def self.SDL_calloc: (untyped, untyped) -> untyped
+    def self.SDL_free: (untyped) -> untyped
+    def self.SDL_malloc: (untyped) -> untyped
+    def self.SDL_realloc: (untyped, untyped) -> untyped
+  end
+end

@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "bundler/setup"
+require "SDLRuby"
+
+# You can add fixtures and/or initialization code here to make experimenting
+# with your gem easier. You can also use a different console, if you like.
+func_map = SDLRuby::SDL.instance_variable_get(:@func_map)
+flist = func_map.values.sort_by(&:name)
+flist.map do |f|
+  a = f.instance_variable_get(:@argument_types).size
+  v = f.instance_variable_get(:@is_variadic)
+  at = a.times.map { "untyped" } << (v ? "*untyped" : nil)
+  at.compact!
+  "def self.#{f.name}: (#{at.join(", ")}) -> untyped"
+end => siga
+
+siga.each { |a| puts a }
