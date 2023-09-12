@@ -1,0 +1,47 @@
+module SDLRuby
+  class Event
+    include Accessor
+
+    include SDL
+
+    private
+
+    def self.__malloc__: () -> untyped
+
+    public
+
+    def self.clear: () -> void
+
+    def self.deq: (?bool non_block) -> (self | nil)
+
+    def self.disable: (Integer `type`) -> void
+
+    def self.empty?: () -> untyped
+
+    def self.enable: (Integer `type`) -> void
+
+    def self.get: () -> Event
+
+    def self.length: () -> Integer
+
+    alias self.size self.length
+
+    def self.quit?: () -> bool
+
+    def self.reserve: (Integer num) -> Integer
+
+    def self.update: () -> void
+
+    def self.wait: (?Integer|Float|Rational? timeout) -> boolish
+
+    def initialize: (untyped ptr) -> void
+
+    private
+
+    attr_reader entity: untyped
+
+    public
+
+    def to_ptr: () -> untyped
+  end
+end

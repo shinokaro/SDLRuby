@@ -34,7 +34,7 @@ module SDLRuby
       USER_EVENT = SDL_USEREVENT...SDL_LASTEVENT
 
       class << self
-        def to_sym(type)
+        def [](type)
           case type
           when DISPLAY_EVENT   then :display
           when WINDOW_EVENT    then :window

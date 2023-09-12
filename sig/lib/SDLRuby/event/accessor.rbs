@@ -1,0 +1,157 @@
+module SDLRuby
+  class Event
+    module Accessor
+      include SDL
+
+      def self.[]: (Symbol sym) -> Module
+
+      def axis: () -> Integer?
+
+      def ball: () -> Integer?
+
+      def button: () -> Integer?
+
+      def clicks: () -> Integer?
+
+      def code: () -> Integer?
+
+      def dDist: () -> Float?
+
+      def dTheta: () -> Float?
+
+      def data: () -> Array[Float]?
+
+      def data1: () -> (Integer | untyped)?
+
+      def data2: () -> (Integer | untyped)?
+
+      def direction: () -> Integer?
+
+      def display: () -> Integer?
+
+      def dx: () -> Integer?
+
+      def dy: () -> Integer?
+
+      def error: () -> Float?
+
+      def event: () -> Integer?
+
+      def file: () -> String?
+
+      def finger: () -> Integer?
+
+      def fingerId: () -> Integer?
+
+      def gestureId: () -> Integer?
+
+      def hat: () -> Integer?
+
+      def iscapture: () -> Integer?
+
+      def keysym: () -> Hash[String, Integer]?
+
+      def length: () -> Integer?
+
+      def level: () -> Integer?
+
+      def mouseX: () -> Integer?
+
+      def mouseY: () -> Integer?
+
+      def msg: () -> untyped?
+
+      def numFingers: () -> Integer?
+
+      def padding: () -> void
+
+      def padding1: () -> void
+
+      def padding2: () -> void
+
+      def padding3: () -> void
+
+      def padding4: () -> void
+
+      def preciseX: () -> Float?
+
+      def preciseY: () -> Float?
+
+      def pressure: () -> Float?
+
+      def repeat: () -> Integer?
+
+      def sensor: () -> Integer?
+
+      def start: () -> Integer?
+
+      def state: () -> Integer?
+
+      def text: () -> String?
+
+      def timestamp: () -> Integer
+
+      def timestamp_us: () -> Integer?
+
+      def touchId: () -> Integer?
+
+      def touchpad: () -> Integer?
+
+      def type: () -> Integer
+
+      def value: () -> Integer?
+
+      def which: () -> Integer?
+
+      def windowID: () -> Integer?
+
+      def x: () -> (Integer | Float)?
+
+      def xrel: () -> Integer?
+
+      def y: () -> (Integer | Float)?
+
+      def yrel: () -> Integer?
+
+      alias d_dist dDist
+
+      alias d_theta dTheta
+
+      alias finger_id fingerId
+
+      alias gesture_id gestureId
+
+      alias mouse_x mouseX
+
+      alias mouse_y mouseY
+
+      alias num_fingers numFingers
+
+      alias precise_x preciseX
+
+      alias precise_y preciseY
+
+      alias touch_id touchId
+
+      alias window_id windowID
+
+      def capture?: () -> bool
+
+      def pressed?: () -> bool
+
+      def scancode: () -> Integer?
+
+      def sym: () -> Integer?
+
+      def mod: () -> Integer?
+
+      private
+
+      def char_ary_to_str: (Array[Integer] a) -> ("" | String)
+
+      def char_ptr_to_str: (untyped ptr) -> ("" | String)
+
+      def keep_member_pointer: (untyped) -> void
+    end
+  end
+end
