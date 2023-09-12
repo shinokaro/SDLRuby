@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+# encoding: US-ASCII
+
 module SDLRuby::SDL
   require_relative "SDL_stdinc.h"
 
