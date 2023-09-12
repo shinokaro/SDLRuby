@@ -2,6 +2,10 @@
 
 ## [0.2.0] - 2023-09-13
 
+- Memory leak fix on event retrieval failure. 
+
+## [0.2.0] - 2023-09-13
+
 - Implementation of the Event Object. SDL event queue is now available.
 
 ## [0.1.0] - 2023-08-30
