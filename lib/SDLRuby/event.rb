@@ -6,9 +6,9 @@ module SDLRuby
     include Accessor, Fiddle, SDL
 
     class << self
-      include SDL
+      include Fiddle, SDL
 
-      private def __malloc__ = Fiddle.malloc(SDL_Event.size)
+      private def __malloc__ = Pointer.malloc(SDL_Event.size, RUBY_FREE)
 
       def clear = SDL.SDL_FlushEvents(SDL_FIRSTEVENT, SDL_LASTEVENT)
 
@@ -43,8 +43,11 @@ module SDLRuby
         end
 
         e = __malloc__
-        SDL.SDL_WaitEvent(e)
-        new(e)
+        if SDL.SDL_WaitEvent(e) == 1
+          new(e)
+        else
+          raise SDLError
+        end
       end
 
       def length = SDL.SDL_PeepEvents(nil, 0, SDL_PEEKEVENT, 0, -1)
@@ -84,15 +87,15 @@ module SDLRuby
     end
 
     def initialize(ptr)
+      @ptr = ptr
       st = SDL_Event.new(ptr)
       sym = Type[st.type]
       @entity = st.__send__(sym)
-      @entity.to_ptr.free = RUBY_FREE
       extend(Accessor[sym])
     end
 
     private attr_reader :entity
 
-    def to_ptr = @entity.to_ptr
+    def to_ptr = @ptr
   end
 end
