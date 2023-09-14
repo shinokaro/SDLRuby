@@ -60,7 +60,33 @@ module SDLRuby
         raise SDLError if err < 0
       end
 
-      def init?(flags) = SDL.WasInit(flags).nonzero?
+      # Description:
+      #
+      # This method checks the initialization status of SDL subsystems based on
+      # the provided flags. You can specify the SDL subsystems you want to check
+      # by combining the SDL_INIT_* flags using bitwise OR.
+      #
+      # Parameters:
+      #
+      # flags (optional): An integer or a combination of SDL_INIT_* flags
+      # representing the SDL subsystems to check. Default is nil.
+      #
+      # Return Value:
+      #
+      # If all the specified SDL subsystems in flags are initialized,
+      # the method returns true.
+      # If any of the specified SDL subsystems are not initialized,
+      # it returns false.
+      # If flags is given as nil or 0,
+      # the method returns true if any of the SDL subsystems are initialized.
+      #
+      def init?(flags = nil)
+        if flags && flags != 0
+          SDL.SDL_WasInit(flags) == flags
+        else
+          SDL.SDL_WasInit(0) != 0
+        end
+      end
 
       def quit = SDL.SDL_Quit
 
