@@ -117,12 +117,14 @@ module SDLRuby
       assert_respond_to SDL, :last_error_message=
 
       exp = "test message"
-
       SDL.last_error_message = exp
+      assert_equal exp, SDL.SDL_GetError.to_s
 
-      act = SDL.SDL_GetError.to_s
-
-      assert_equal exp, act
+      exp = "printf style(%d)"
+      SDL.last_error_message = exp
+      assert_equal exp, SDL.SDL_GetError.to_s,
+                   "When a printf-style string is provided, proper escaping is\
+ not being performed"
     end
   end
 end
