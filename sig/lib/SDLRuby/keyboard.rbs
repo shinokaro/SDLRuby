@@ -1,0 +1,25 @@
+module SDLRuby
+  module Keyboard
+    include SDL
+
+    def self.==: (untyped other) -> bool
+
+    def self.any?: () -> bool
+
+    def self.clear: () -> void
+
+    def self.mod: () -> Integer
+
+    def self.scancode: (String | Symbol s) -> Integer
+
+    def self.scancode_name: (Integer num) -> String
+
+    def self.size: () -> Integer
+
+    alias self.length self.size
+
+    def self.to_a: () -> Array[Integer]
+
+    def self.to_str: () -> String
+  end
+end

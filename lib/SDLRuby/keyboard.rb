@@ -3,56 +3,67 @@ module SDLRuby
     module_eval do
       num_keys = SDL.tmp_value("int")
 
-      # SDL_GetKeyboardState() が戻すポインターはSDLがロードされた時点で作成されている。
-      # この関数は SDL_Init() より前に呼ぶことができる。
+      # The SDL_GetKeyboardState function can be called before SDL_Init.
+      #
       ptr = SDL.SDL_GetKeyboardState(num_keys)
 
-      # エラーになるのはnum_keysにNULLを渡したとき。
+      # SDL_GetKeyboardState returns an error when num_keys is NULL.
+      #
       raise SDLError if ptr.null?
 
       ptr.size = num_keys.value
-      @state = ptr
+      @ptr = ptr.freeze
     end
 
     class << self
-      def [](idx)
-        raise IndexError if idx < 0 || @state.size <= idx
-        @state[idx] != 0
+      include SDL
+
+      # This method specifies the ability to check for a match with
+      # the characters appearing in the 'when' clause of a 'case' statement.
+      #
+      # see also: String#===
+      #
+      def ==(other)
+        case other
+        when Integer
+          0 <= other && other < @ptr.size && @ptr[other] != 0
+        when String, Symbol
+          (idx = scancode(other)) != 0 && @ptr[idx] != 0
+        else
+          super
+        end
       end
 
-      def any? = to_a.any?
-
-      def clear = SDL.SDL_ResetKeyboard
-
-      # キー名からキーコードを得る
-      def keycode(s) = SDL.GetKeyFromName(s).nonzero?
-
-      # キーコードからキー名を得る
-      def keycode_name(num)
-        (s = SDL.GetKeyName(num).to_s).empty? ? nil : s
+      def any?
+        # SDL sets a byte to either 0x00 or 0x01 for each scancode.
+        # It does not fill the byte sequence with 0x80, so this should work.
+        #
+        to_str.sum != 0
       end
 
-      # 修飾キーの状態を得る
-      def mod
-        SDL.SDL_GetModState #=> integer
+      def clear
+        # SDL_ResetKeyboard should be preceded by initializing SDL events since
+        # it sends SDLK_KEYUP events for pressed keys.
+        #
+        # Calling SDL_ResetKeyboard when the SDL event subsystem is not initialized
+        # results in a core dump.
+        #
+        SDL.SDL_ResetKeyboard if SDL.init?(SDL_INIT_EVENTS)
       end
 
-      # 修飾キーを設定する
-      def mod=(modstate)
-        SDL.SDL_SetModState(modstate)
-      end
+      def mod = SDL.SDL_GetModState
 
-      # キー名からスキャンコードを得る
-      def scancode(s) = SDL.GetScancodeFromName(s).nonzero?
+      def scancode(s) = SDL.SDL_GetScancodeFromName(s.to_s)
 
-      # スキャンコードからキー名を得る
-      def scancode_name(num)
-        (s = SDL.GetScancodeName(num).to_s).empty? ? nil : s
-      end
+      def scancode_name(num) = SDL.SDL_GetScancodeName(num).to_s
 
-      def to_a = to_str.unpack("C*").map(&:nonzero?)
+      def size = @ptr.size
 
-      def to_str = @state.to_str
+      alias length size
+
+      def to_a = size.times.select { |i| @ptr[i] != 0 }
+
+      def to_str = @ptr.to_str
     end
   end
 end
