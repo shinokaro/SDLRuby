@@ -4,23 +4,7 @@ require 'test_helper'
 
 module SDLRuby
   class SDLTest < Minitest::Test
-    include ::SDLRuby, ::SDLRuby::SDL
-
-    def sdl_init(flags)
-      err = SDL.SDL_Init(flags)
-      raise "SDL initialization failed" if err < 0
-      if block_given?
-        begin
-          yield
-        ensure
-          sdl_quit
-        end
-      end
-    end
-
-    def sdl_was_init = SDL.SDL_WasInit(0)
-
-    def sdl_quit = SDL.SDL_Quit
+    include ::SDLRuby, ::SDLRuby::SDL, TestHelper
 
     def test_init
       assert_respond_to SDL, :init
