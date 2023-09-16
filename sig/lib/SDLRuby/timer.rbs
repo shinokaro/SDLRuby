@@ -1,0 +1,7 @@
+module SDLRuby
+  module Timer
+    def self.ticks: () -> Integer
+
+    def self.inspect: () -> String
+  end
+end

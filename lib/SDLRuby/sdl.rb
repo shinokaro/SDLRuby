@@ -50,6 +50,7 @@ module SDLRuby
     require_relative 'surface'
     require_relative 'text_input'
     require_relative 'texture'
+    require_relative 'timer'
     require_relative 'window'
 
     class << self
@@ -183,7 +184,7 @@ module SDLRuby
 
       # timer
       #
-      def ticks = SDL.SDL_GetTicks
+      def ticks = Timer.ticks
 
       # version
       #
