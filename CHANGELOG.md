@@ -1,6 +1,6 @@
 ## [Unreleased]
 
-## [0.2.0] - 2023-09-13
+## [0.2.1] - 2023-09-13
 
 - Memory leak fix on event retrieval failure. 
 
