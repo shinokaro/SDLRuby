@@ -1,5 +1,11 @@
 ## [Unreleased]
 
+## [0.3.0] - 2023-09-19
+- Implemented Mouse Module.
+- Implementation of the Timer Module.
+- Implemented Keyboard Module.
+- Specification and implementation of SDL.init, SDL.init?, and SDL.quit.
+
 ## [0.2.1] - 2023-09-13
 
 - Memory leak fix on event retrieval failure. 
