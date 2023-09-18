@@ -1,0 +1,35 @@
+module SDLRuby
+  module Mouse
+    include SDL
+
+    def self.button: () -> Array[bool]
+
+    def self.capture=: (boolish) -> void
+
+    def self.global_button: () -> Array[bool]
+
+    def self.global_pos: () -> [Integer, Integer]
+
+    def self.global_pos=: ([Integer, Integer] xy) -> void
+
+    def self.global_state: () -> [Array[bool], Integer, Integer]
+
+    def self.pos: () -> [Integer, Integer]
+
+    def self.pos=: ([Integer, Integer] xy) -> void
+
+    def self.relative=: (boolish) -> untyped
+
+    def self.relative?: () -> bool
+
+    def self.relative_pos: () -> [Integer, Integer]
+
+    def self.relative_state: () -> [Array[bool], Integer, Integer]
+
+    def self.state: () -> [Array[bool], Integer, Integer]
+
+    private
+
+    def self.button_to_ary: (Integer num) -> ::Array[bool]
+  end
+end
