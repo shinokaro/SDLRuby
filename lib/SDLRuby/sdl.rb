@@ -7,16 +7,16 @@ module SDLRuby
     dlload "SDL2"
 
     SDL_DESTROY_RENDERER = import_symbol("SDL_DestroyRenderer").to_int
-    SDL_DESTROY_TEXTURE = import_symbol("SDL_DestroyTexture").to_int
+    SDL_DESTROY_TEXTURE  = import_symbol("SDL_DestroyTexture").to_int
 
     # SDL_freeはSDL_SetMemoryFunctionsで設定された関数を使用する。
     # SDL側のメモリーを開放する場合はFiddle::PointerへSDL_FREEを設定してよい。
     #
-    SDL_FREE = SDL.import_symbol("SDL_free").to_int
-    SDL_FREE_CURSOR = import_symbol("SDL_FreeCursor").to_int
-    SDL_FREE_FORMAT = import_symbol("SDL_FreeFormat").to_int
+    SDL_FREE         = import_symbol("SDL_free").to_int
+    SDL_FREE_CURSOR  = import_symbol("SDL_FreeCursor").to_int
+    SDL_FREE_FORMAT  = import_symbol("SDL_FreeFormat").to_int
     SDL_FREE_PALETTE = import_symbol("SDL_FreePalette").to_int
-    SDL_FREE_RW = import_symbol("SDL_FreeRW").to_int
+    SDL_FREE_RW      = import_symbol("SDL_FreeRW").to_int
     SDL_FREE_SURFACE = import_symbol("SDL_FreeSurface").to_int
 
     def self.tmp_value(*a, &)
