@@ -84,10 +84,5 @@ module SDLRuby
       raise SDLError, "released" if closed?
       @st.to_ptr
     end
-
-    def type
-      raise SDLError, "released" if closed?
-      @st.type
-    end
   end
 end
