@@ -43,9 +43,11 @@ module SDLRuby
         rw = super(ptr)
 
         if block_given?
-          obj = yield(rw)
-          rw.close
-          obj
+          begin
+            yield(rw)
+          ensure
+            rw.close
+          end
         else
           rw
         end
