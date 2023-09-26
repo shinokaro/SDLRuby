@@ -76,6 +76,12 @@ module SDLRuby
       end
     end
 
+    def initialize_copy(other)
+      raise SDLError, "closed stream" if closed?
+
+      super
+    end
+
     def to_ptr = @st.to_ptr
   end
 end
