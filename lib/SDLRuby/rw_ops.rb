@@ -83,7 +83,6 @@ module SDLRuby
     end
 
     def to_ptr
-      raise SDLError, "released" if closed?
       @st.to_ptr
     end
   end
