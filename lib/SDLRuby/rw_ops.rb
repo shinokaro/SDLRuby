@@ -7,23 +7,20 @@ module SDLRuby
 
     class << self
       def [](src, autoclose: nil, readonly: nil)
-        case src
-        when RWOps
-          return src
-        when String
-          size = src.bytesize
+        return src if src.kind_of?(RWOps)
+
+        if src.instance_of?(String)
           ptr = if readonly
-                  SDL.SDL_RWFromConstMem(src, size)
+                  SDL.SDL_RWFromConstMem(src, src.bytesize)
                 else
-                  SDL.SDL_RWFromMem(src, size)
+                  SDL.SDL_RWFromMem(src, src.bytesize)
                 end
           raise SDLError if ptr.null?
-        when Fiddle::Pointer
-          size = src.size
+        elsif src.kind_of?(Fiddle::Pointer)
           ptr = if readonly
-                  SDL.SDL_RWFromConstMem(src, size)
+                  SDL.SDL_RWFromConstMem(src, src.size)
                 else
-                  SDL.SDL_RWFromMem(src, size)
+                  SDL.SDL_RWFromMem(src, src.size)
                 end
           raise SDLError if ptr.null?
         else
@@ -67,23 +64,18 @@ module SDLRuby
       # close関数の差し替えをすることで、SDLがcloseを行ってもRuby側に伝達できる。
       # int (*close) (SDL_RWops *context)
       #
-      st = @st
-      @st.close = @close = Closure::BlockCaller.new(
-        TYPE_INT, [TYPE_VOIDP]
-      ) do |context|
+      @st.close = @close = Closure::BlockCaller.new(TYPE_INT, [TYPE_VOIDP]) do |_|
         # call_free はclose関数の戻り値が渡されないためcloseの失敗は分からない。
-        st.to_ptr.call_free
+        to_ptr.call_free
 
         if $DEBUG
-          warn "SDL_RWops(0x#{st.to_i.to_s(16)}) closed."
+          warn "SDL_RWops(0x#{st.to_i.to_s(16)}) closed"
         end
 
         0
       end
     end
 
-    def to_ptr
-      @st.to_ptr
-    end
+    def to_ptr = @st.to_ptr
   end
 end
