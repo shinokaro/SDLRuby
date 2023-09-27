@@ -11,6 +11,8 @@ module TestHelper
 
   module_function
 
+  def sdl_clear_error = SDL.SDL_ClearError
+
   def sdl_get_error
     SDL.SDL_GetError.to_s
   end
