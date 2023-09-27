@@ -1,5 +1,8 @@
 ## [Unreleased]
 
+## [0.3.1] - 2023-09-28
+- Refactored RWOps class.
+
 ## [0.3.0] - 2023-09-19
 - Implemented Mouse Module.
 - Implementation of the Timer Module.
