@@ -65,14 +65,14 @@ module SDLRuby
       # ※これはKernel#yメソッドにオブジェクトが応答してしまうため、
       # 事前にattr_readerでオーバーライドする。
       #
-      attr_reader *%w[
+      attr_reader(*%w[
         axis ball button clicks code dDist dTheta data data1 data2 direction
         display dx dy error event file finger fingerId gestureId hat iscapture
         keysym length level mouseX mouseY msg numFingers
         padding padding1 padding2 padding3 padding4
         preciseX preciseY pressure repeat sensor start state text timestamp
         timestamp_us touchId touchpad type value which windowID x xrel y yrel
-      ]
+      ])
 
       # Ruby like accessor
       #
