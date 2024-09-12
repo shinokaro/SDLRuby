@@ -7,6 +7,8 @@ require "minitest/autorun"
 require "fiddle"
 
 module TestHelper
+  SDLRuby.load_sdl
+
   include ::Fiddle, ::SDLRuby, ::SDLRuby::SDL
 
   module_function
