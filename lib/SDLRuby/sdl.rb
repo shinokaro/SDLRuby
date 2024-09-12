@@ -153,7 +153,7 @@ module SDLRuby
       # message box
       #
       def alert(message, title = nil, flags: nil, window: nil)
-        err = SDL.SDL_ShowSimpleMessageBox(flags,
+        err = SDL.SDL_ShowSimpleMessageBox(flags.to_i,
                                            title.to_s.encode("UTF-8"),
                                            message.to_s.encode("UTF-8"),
                                            window)
